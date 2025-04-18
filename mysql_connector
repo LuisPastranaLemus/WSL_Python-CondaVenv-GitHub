@@ -41,4 +41,3 @@ conn = mysql.connector.connect(
     password="P@5tr4n4L3mu5",
     database="testdb"
 )
-..
