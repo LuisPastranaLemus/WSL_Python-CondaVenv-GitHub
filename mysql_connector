@@ -1,0 +1,43 @@
+import mysql.connector
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="your_database"
+)
+
+🌀 Restart MySQL manually each time WSL is restarted:
+
+sudo service mysql start
+
+You can create a shortcut/alias in your ~/.bashrc:
+
+alias mysqlon='sudo service mysql start'
+
+Then simply run:
+
+mysqlon
+
+
+
+🌀  Bonus: Create and connect to a test database
+sudo mysql -u root -p
+
+Inside the MySQL shell:
+
+CREATE DATABASE testdb;
+CREATE USER 'luispastrana'@'localhost' IDENTIFIED BY 'P@5tr4n4L3mu5';
+GRANT ALL PRIVILEGES ON testdb.* TO 'luispastrana'@'localhost';
+FLUSH PRIVILEGES;
+exit;
+
+
+Then connect from Python:
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="luispastrana",
+    password="P@5tr4n4L3mu5",
+    database="testdb"
+)
